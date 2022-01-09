@@ -4,8 +4,13 @@ const routes = [
     {
         path: '/',
         name: 'main',
-        component: () => import('./components/HelloWorld.vue'),
+        component: () => import('./components/HelloWorld'),
     },
+    {
+        path: '/socket',
+        name: 'socket',
+        component: () => import('./components/Socket'),
+    }
 ]
 
 const router = createRouter({
