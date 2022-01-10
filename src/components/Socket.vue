@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-on:click="test">connect</button>
+        <button v-on:click="connect">connect</button>
         <textarea v-model="message" />
     </div>
 </template>
@@ -16,22 +16,18 @@ export default {
             message: '',
         }
     },
-    async created() {
-        window.io = require('socket.io-client')
-        this.socket = new Echo({
-            broadcaster: 'socket.io',
-            host: 'http://localhost:6001',
-        })
-        this.socket.channel('laravel_database_test')
-            .listen('test', (e) => {
-                this.message = e.message
-            })
-    },
     methods: {
-        test: function (event) {
-            console.log(event)
-            console.log('test')
-        }
+        connect: function () {
+            window.io = require('socket.io-client')
+            this.socket = new Echo({
+                broadcaster: 'socket.io',
+                host: 'http://localhost:6001',
+            })
+            this.socket.channel('laravel_database_test')
+                .listen('test', (e) => {
+                    this.message = e.message
+                })
+        },
     },
 }
 </script>
