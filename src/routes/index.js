@@ -4,17 +4,12 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("./views/Login"),
-  },
-  {
-    path: "/",
-    name: "main",
-    component: () => import("./views/Main"),
+    component: () => import("../views/Login"),
   },
   {
     path: "/socket",
     name: "socket",
-    component: () => import("./components/Socket"),
+    component: () => import("../components/Socket"),
   }
 ]
 
