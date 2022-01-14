@@ -1,0 +1,80 @@
+<template>
+  <div class="container">
+    <div id="div">
+      <span id="label_text">Sign In</span>
+    </div>
+    <form id="login_form">
+      <input class="input" type="text" v-model="login_info.id" placeholder="ID" required/>
+      <input class="input" type="text" v-model="login_info.password" placeholder="PASSWORD" required/>
+      <button id="login_btn" v-on:click="login">LOGIN</button>
+    </form>
+    <div id="div">
+      <span id="sign_up" v-on:click="signup">Create Your Account</span>
+    </div>
+  </div>
+</template>
+
+<script>  
+export default {
+  name: "Login",
+  data: function () {
+    return {
+      login_info: {
+        id: "",
+        password: "",
+      }
+    }
+  },
+  methods: {
+    login: function () {
+      console.log("login")
+    },
+    signup: function () {
+      console.log("sign up")
+    },
+  },
+}
+</script>
+
+<style scoped>
+  .container {
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+  #div {
+    flex: 1;
+  }
+  #label_text {
+    padding: 2px;
+    border-bottom: 4px solid #267DFF;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  #login_form {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 40px;
+  }
+  .input {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  #login_btn {
+    background-color: #267DFF;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: 0px;
+    border-radius: 100px;
+    height: 60px;
+    margin-top: 40px;
+    cursor: pointer;
+  }
+  #sign_up {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+</style>
