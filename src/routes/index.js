@@ -1,4 +1,12 @@
 import { createWebHistory, createRouter } from "vue-router";
+import store from '../store'
+
+const requireAuth = () => (to, from, next) => {
+  if (store.getters.isAuth) {
+    return next();
+  }
+  next('/login');
+};
 
 const routes = [
   {
@@ -10,6 +18,7 @@ const routes = [
     path: "/socket",
     name: "socket",
     component: () => import("../components/Socket"),
+    beforeEnter: requireAuth(),
   }
 ]
 

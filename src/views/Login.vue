@@ -4,9 +4,9 @@
       <span id="label_text">Sign In</span>
     </div>
     <form id="login_form">
-      <input class="input" type="text" v-model="login_info.id" placeholder="ID" required/>
-      <input class="input" type="text" v-model="login_info.password" placeholder="PASSWORD" required/>
-      <button id="login_btn" v-on:click="login">LOGIN</button>
+      <input class="input" type="text" v-model="id" placeholder="ID" required/>
+      <input class="input" type="password" v-model="password" placeholder="PASSWORD" required/>
+      <button type="button" id="login_btn" v-on:click="login">LOGIN</button>
     </form>
     <div id="div">
       <span id="sign_up" v-on:click="signup">Create Your Account</span>
@@ -14,20 +14,36 @@
   </div>
 </template>
 
-<script>  
+<script>
+import http from "../utils/axios"
+
 export default {
   name: "Login",
   data: function () {
     return {
-      login_info: {
-        id: "",
-        password: "",
-      }
+      id: "",
+      password: "",
+    }
+  },
+  computed: {
+    getToken: function () {
+      return this.$store.getters.getToken;
     }
   },
   methods: {
-    login: function () {
-      console.log("login")
+    login: async function () {
+      var result = await http('/login', 'post', {
+        'user_id': this.id,
+        'password': this.password
+      })
+      if (result.status == 200) {
+        this.$store.commit('setAuthInfo', {
+          'user_id': result.data.data.accessToken.tokenable_id,
+          'name': result.data.data.accessToken.name,
+          'token': result.data.data.plainTextToken,
+        })
+        this.$router.push('/socket')
+      }
     },
     signup: function () {
       console.log("sign up")
