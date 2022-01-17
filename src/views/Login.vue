@@ -25,11 +25,6 @@ export default {
       password: "",
     }
   },
-  computed: {
-    getToken: function () {
-      return this.$store.getters.getToken;
-    }
-  },
   methods: {
     login: async function () {
       var result = await http('/login', 'post', {
