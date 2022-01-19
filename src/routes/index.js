@@ -10,6 +10,11 @@ const requireAuth = () => (to, from, next) => {
 
 const routes = [
   {
+    path: "/",
+    name: "main",
+    component: () => import("../views/Main")
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("../views/Login"),
