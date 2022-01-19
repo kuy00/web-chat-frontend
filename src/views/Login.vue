@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div id="container">
     <div id="div">
       <span id="label_text">Sign In</span>
     </div>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-  .container {
+  #container {
     width: 400px;
     height: 500px;
     display: flex;
