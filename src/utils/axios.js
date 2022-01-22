@@ -6,17 +6,15 @@ const config = {
 }
 const baseUrl = process.env.VUE_APP_API_URL
 const http = async function (url, method = 'GET', payload = {}) {
-  var result
+  let result
   await axios({
     url: baseUrl + url,
     method: method,
     data: payload,
     config: config,
-  })
-  .then((res) => {
+  }).then((res) => {
     result = res
-  })
-  .catch((error) => {
+  }).catch((error) => {
     notify({
       type: 'error',
       text: error.response.data.message,
