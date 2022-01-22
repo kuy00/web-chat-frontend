@@ -1,30 +1,29 @@
 <template>
   <div>
-    <button v-on:click="connect">connect</button>
-    <textarea v-model="message" />
+    <button v-on:click='connect'>connect</button>
+    <textarea v-model='message' />
   </div>
 </template>
 
 <script>
-import Echo from "laravel-echo"
+import Echo from 'laravel-echo'
 
 export default {
-  name: "Socket",
+  name: 'socket-component',
   data: function () {
     return {
       socket: null,
-      message: "",
+      message: '',
     }
   },
   methods: {
     connect: function () {
-      window.io = require("socket.io-client")
+      window.io = require('socket.io-client')
       this.socket = new Echo({
-        broadcaster: "socket.io",
-        host: "http://localhost:6001",
+        broadcaster: 'socket.io',
+        host: 'http://localhost:6001',
       })
-      this.socket.channel("laravel_database_test")
-      .listen("test", (e) => {
+      this.socket.channel('laravel_database_test').listen('test', (e) => {
         this.message = e.message
       })
     },

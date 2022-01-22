@@ -1,47 +1,47 @@
 <template>
-  <div id="container">
-    <div id="div">
-      <span id="label_text">Sign In</span>
+  <div id='container'>
+    <div id='div'>
+      <span id='label_text'>Sign In</span>
     </div>
-    <form id="login_form">
-      <input class="input" type="text" v-model="id" placeholder="ID" required/>
-      <input class="input" type="password" v-model="password" placeholder="PASSWORD" required/>
-      <button type="button" id="login_btn" v-on:click="login">LOGIN</button>
+    <form id='login_form'>
+      <input class='input' type='text' v-model='id' placeholder='ID' required/>
+      <input class='input' type='password' v-model='password' placeholder='PASSWORD' required/>
+      <button type='button' id='login_btn' v-on:click='login'>LOGIN</button>
     </form>
-    <div id="div">
-      <span id="sign_up" v-on:click="signup">Create Your Account</span>
+    <div id='div'>
+      <span id='sign_up' v-on:click='signup'>Create Your Account</span>
     </div>
   </div>
 </template>
 
 <script>
-import http from "../utils/axios"
+import Http from '../utils/axios'
 
 export default {
-  name: "Login",
+  name: 'login-view',
   data: function () {
     return {
-      id: "",
-      password: "",
+      id: '',
+      password: '',
     }
   },
   methods: {
     login: async function () {
-      var result = await http('/login', 'post', {
-        'user_id': this.id,
-        'password': this.password
+      const result = await Http('/login', 'post', {
+        user_id: this.id,
+        password: this.password,
       })
-      if (result.status == 200) {
+      if (result.status === 200) {
         this.$store.commit('setAuthInfo', {
-          'user_id': result.data.data.accessToken.tokenable_id,
-          'name': result.data.data.accessToken.name,
-          'token': result.data.data.plainTextToken,
+          user_id: result.data.data.accessToken.tokenable_id,
+          name: result.data.data.accessToken.name,
+          token: result.data.data.plainTextToken,
         })
         this.$router.push('/socket')
       }
     },
     signup: function () {
-      console.log("sign up")
+      console.log('sign up')
     },
   },
 }

@@ -5,7 +5,7 @@ const auth = {
         user_id: '',
         name: '',
         token: '',
-      }
+      },
     }
   },
   mutations: {
@@ -15,7 +15,7 @@ const auth = {
   },
   getters: {
     isAuth: function (state) {
-      return !!state.user.token;
+      return !!state.user.token
     },
     getUser: function (state) {
       return {
