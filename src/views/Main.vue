@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import SideMenu from './SideMenu'
+import SideMenu from '../components/SideMenu.vue'
 
 export default {
-  name: 'main-view',
+  name: 'MainView',
   components: {
     SideMenu,
   },
@@ -17,7 +17,9 @@ export default {
 
 <style scoped>
   #container {
-    display: flex;
-    flex-direction: column;
+    /* flex-direction: row; */
+    align-self: flex-start;
+    /* display: flex;
+    flex-direction: column; */
   }
 </style>

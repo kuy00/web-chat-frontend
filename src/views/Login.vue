@@ -1,15 +1,17 @@
 <template>
   <div id='container'>
-    <div id='div'>
-      <span id='label_text'>Sign In</span>
-    </div>
-    <form id='login_form'>
-      <input class='input' type='text' v-model='id' placeholder='ID' required/>
-      <input class='input' type='password' v-model='password' placeholder='PASSWORD' @keyup.enter='login' required/>
-      <button type='button' id='login_btn' @click='login'>LOGIN</button>
-    </form>
-    <div id='div'>
-      <span id='sign_up' @click='signup'>Create Your Account</span>
+    <div id='login'>
+      <div id='div'>
+        <span id='label_text'>Sign In</span>
+      </div>
+      <form id='login_form'>
+        <input class='input' type='text' v-model='id' placeholder='ID' required/>
+        <input class='input' type='password' v-model='password' placeholder='PASSWORD' @keyup.enter='login' required/>
+        <button type='button' id='login_btn' @click='login'>LOGIN</button>
+      </form>
+      <div id='div'>
+        <span id='sign_up' @click='signup'>Create Your Account</span>
+      </div>
     </div>
   </div>
 </template>
@@ -19,7 +21,7 @@ import Http from '../utils/axios'
 import { error } from '../notification'
 
 export default {
-  name: 'login-view',
+  name: 'LoginView',
   data: function () {
     return {
       id: '',
@@ -52,10 +54,16 @@ export default {
 
 <style scoped>
   #container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+  #login {
     width: 400px;
     height: 500px;
     display: flex;
     flex-direction: column;
+    margin: auto;
   }
   #div {
     flex: 1;

@@ -1,5 +1,5 @@
 <template>
-  <div ref="svg" id="container">
+  <div>
     <svg-loader
       :svgFile='peopleSvg'
       width=100
@@ -13,7 +13,7 @@
 import people from '@/assets/people.svg'
 
 export default {
-  name: 'side-menu',
+  name: 'SlideMenu',
   data: function () {
     return {
       peopleSvg: people,

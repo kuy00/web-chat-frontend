@@ -9,7 +9,7 @@
 import Echo from 'laravel-echo'
 
 export default {
-  name: 'socket-component',
+  name: 'SocketComponent',
   data: function () {
     return {
       socket: null,
