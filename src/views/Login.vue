@@ -5,17 +5,18 @@
     </div>
     <form id='login_form'>
       <input class='input' type='text' v-model='id' placeholder='ID' required/>
-      <input class='input' type='password' v-model='password' placeholder='PASSWORD' required/>
-      <button type='button' id='login_btn' v-on:click='login'>LOGIN</button>
+      <input class='input' type='password' v-model='password' placeholder='PASSWORD' @keyup.enter='login' required/>
+      <button type='button' id='login_btn' @click='login'>LOGIN</button>
     </form>
     <div id='div'>
-      <span id='sign_up' v-on:click='signup'>Create Your Account</span>
+      <span id='sign_up' @click='signup'>Create Your Account</span>
     </div>
   </div>
 </template>
 
 <script>
 import Http from '../utils/axios'
+import { error } from '../notification'
 
 export default {
   name: 'login-view',
@@ -38,6 +39,8 @@ export default {
           token: result.data.data.plainTextToken,
         })
         this.$router.push('/socket')
+      } else {
+        error(this, 'login fail')
       }
     },
     signup: function () {
