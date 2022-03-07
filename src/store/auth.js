@@ -1,30 +1,30 @@
 const auth = {
-  state: function () {
+  state: () => {
     return {
-      user: {
-        user_id: '',
-        name: '',
-        token: '',
-      },
+      user_id: '',
+      name: '',
+      token: '',
     }
   },
   mutations: {
-    setAuthInfo: function (state, payload) {
-      state.user = { ...payload }
+    setAuthInfo: (state, auth) => {
+      state.user_id = auth.user_id
+      state.name = auth.name
+      state.token = auth.token
     },
   },
   getters: {
-    isAuth: function (state) {
-      return !!state.user.token
+    isAuth: (state) => {
+      return !!state.token
     },
-    getUser: function (state) {
+    getUser: (state) => {
       return {
-        user_id: state.user.user_id,
+        user_id: state.user_id,
         name: state.name,
       }
     },
-    getToken: function (state) {
-      return 'Bearer' + state.user.token
+    getToken: (state) => {
+      return 'Bearer ' + state.token
     },
   },
 }
