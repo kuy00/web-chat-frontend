@@ -42,7 +42,7 @@ export default {
         })
         this.$router.push('/socket')
       } else {
-        error(this, 'login fail')
+        error(this, result.data.message)
       }
     },
     signup: function () {
