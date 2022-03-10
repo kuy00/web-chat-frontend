@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import store from '../store'
 import ChatList from '../views/ChatList.vue'
-import FriendList from '../views/FriendList.vue'
+import UserList from '../views/UserList.vue'
 import Login from '../views/Login.vue'
 import Socket from '../components/Socket.vue'
 
@@ -15,8 +15,8 @@ const requireAuth = () => (to, from, next) => {
 const routes = [
   {
     path: '/',
-    name: 'friend/list',
-    component: () => FriendList,
+    name: 'user/list',
+    component: () => UserList,
   },
   {
     path: '/chat/list',

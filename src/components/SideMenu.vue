@@ -2,7 +2,7 @@
   <div id='side_menu'>
     <svg-loader
       class='img'
-      @click='friendList'
+      @click='userList'
       :svgFile='peopleSvg'
       :width=50
       :height=50
@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    friendList: function () {
+    userList: function () {
       this.$router.push('/')
     },
     chatList: function () {
