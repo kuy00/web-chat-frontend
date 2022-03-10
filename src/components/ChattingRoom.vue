@@ -11,7 +11,7 @@ export default {
 
 <style scoped>
   #chatting_room {
-    flex: 1;
+    flex: 2;
     background-color: aquamarine;
   }
 </style>
