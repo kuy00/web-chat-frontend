@@ -1,21 +1,23 @@
 <template>
   <div id='side_menu'>
-    <svg-loader
-      class='img'
-      @click='userList'
-      :svgFile='peopleSvg'
-      :width=50
-      :height=50
-      :fill="setStyle('/')"
-    />
-    <svg-loader
-      class='img'
-      @click='chatList'
-      :svgFile='meesageSvg'
-      :width=50
-      :height=50
-      :fill="setStyle('/chat/list')"
-    />
+    <router-link to="/">
+      <svg-loader
+        class='img'
+        :svgFile='peopleSvg'
+        :width=50
+        :height=50
+        :fill="setStyle('/')"
+      />
+    </router-link>
+    <router-link to="/chat/list">
+      <svg-loader
+        class='img'
+        :svgFile='meesageSvg'
+        :width=50
+        :height=50
+        :fill="setStyle('/chat/list')"
+      />
+    </router-link>
   </div>
 </template>
 
@@ -32,12 +34,6 @@ export default {
     }
   },
   methods: {
-    userList: function () {
-      this.$router.push('/')
-    },
-    chatList: function () {
-      this.$router.push('/chat/list')
-    },
     setStyle: function (path) {
       return this.$route.path === path ? 'white' : '#75787d'
     },
