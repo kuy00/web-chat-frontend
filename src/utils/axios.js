@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { notify } from '@kyvg/vue3-notification'
+import store from '../store'
 
 const config = {
   withCredentials: false,
@@ -12,13 +12,12 @@ const http = async function (url, method = 'GET', payload = {}) {
     method: method,
     data: payload,
     config: config,
+    headers: {
+      Authorization: store.getters.getToken,
+    },
   }).then((res) => {
     result = res
   }).catch((error) => {
-    notify({
-      type: 'error',
-      text: error.response.data.message,
-    })
     result = error.response
   })
 
