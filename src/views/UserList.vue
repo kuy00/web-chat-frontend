@@ -1,26 +1,31 @@
 <template>
   <div id='container'>
     <SideMenu />
-    <div class='main-container'>
-      <div class='search-container'>
+    <div id='main-container'>
+      <div id='search-container'>
         <input
-          class='input-container'
+          id='input-container'
           type='text'
           placeholder='search'
           @input='search'
         />
-        <div class='svg-container'>
-          <svg-loader
-            :svgFile='searchSvg'
-            :width=40
-            :height=30
-            fill='gray'
-          />
-        </div>
+        <svg-loader
+          id='svg-container'
+          :svgFile='searchSvg'
+          :width=40
+          :height=30
+          fill='gray'
+        />
       </div>
       <ul style='padding: 0px'>
-        <li class='list' v-for='user in filtered' v-bind:key='user.id'>
-          <div class='image-container'>
+        <li
+          id='list'
+          v-for='user in filtered'
+          v-bind:key='user.id'
+          :style='setStyle(user)'
+          @click='chatt($event, user)'
+        >
+          <div id='image-container'>
             <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile23.uf.tistory.com%2Fimage%2F2207573D58CFDE2704BB29">
           </div>
           <div>
@@ -29,7 +34,7 @@
         </li>
       </ul>
     </div>
-    <ChattingRoom />
+    <ChattingRoom v-model='currentUser'/>
   </div>
 </template>
 
@@ -47,6 +52,7 @@ export default {
       searchSvg: search,
       searchData: '',
       userList: [],
+      currentUser: {},
     }
   },
   components: {
@@ -76,6 +82,12 @@ export default {
     search: function (e) {
       this.searchData = e.target.value
     },
+    chatt: function (e, user) {
+      this.currentUser = user
+    },
+    setStyle: function (user) {
+      return this.currentUser === user ? 'background-color: lightgray' : ''
+    },
   },
 }
 </script>
@@ -86,36 +98,36 @@ export default {
     height: 100%;
     display: flex;
   }
-  .main-container {
+  #main-container {
     flex: 1;
     height: 100%;
     overflow-y: auto;
   }
-  .list {
+  #list {
     display: flex;
     padding: 10px 15px;
   }
-  .list:hover {
+  #list:hover {
     cursor: pointer;
     background-color: lightgray;
   }
-  .image-container {
+  #image-container {
     width: 60px;
     height: 60px;
     border-radius: 20px;
     overflow: hidden;
     margin-right: 10px;
   }
-  .image-container img {
+  #image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .list span {
+  #list span {
     font-size: 17px;
     line-height: 60px;
   }
-  .search-container {
+  #search-container {
     display: flex;
     height: 40px;
     border-radius: 10px;
@@ -123,17 +135,17 @@ export default {
     margin: 10px;
     overflow: hidden;
   }
-  .input-container {
+  #input-container {
     width: 100%;
     height: 100%;
     align-self: center;
     border: none;
     padding: 10px;
   }
-  .input-container:focus {
+  #input-container:focus {
     outline: none;
   }
-  .svg-container {
+  #svg-container {
     align-self: center;
   }
 </style>
