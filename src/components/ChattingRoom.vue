@@ -69,7 +69,7 @@ export default {
     overflow: hidden;
     margin-right: 10px;
   }
-  #image-container img  {
+  #image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
