@@ -5,7 +5,7 @@
         <span id='label_text'>Sign In</span>
       </div>
       <form id='login_form'>
-        <input class='input' type='text' v-model='id' placeholder='ID' required/>
+        <input class='input' type='text' ref='id' v-model='id' placeholder='ID' required/>
         <input class='input' type='password' v-model='password' placeholder='PASSWORD' @keyup.enter='login' required/>
         <button type='button' id='login_btn' @click='login'>LOGIN</button>
       </form>
@@ -27,6 +27,9 @@ export default {
       id: '',
       password: '',
     }
+  },
+  mounted: function () {
+    this.$refs.id.focus()
   },
   methods: {
     login: async function () {
