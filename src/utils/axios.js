@@ -4,11 +4,10 @@ import store from '../store'
 const config = {
   withCredentials: false,
 }
-const baseUrl = process.env.VUE_APP_API_URL
 const http = async function (url, method = 'GET', payload = {}) {
   let result
   await axios({
-    url: baseUrl + url,
+    url: '/api' + url,
     method: method,
     data: payload,
     config: config,
