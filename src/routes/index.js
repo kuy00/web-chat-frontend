@@ -17,11 +17,13 @@ const routes = [
     path: '/',
     name: 'user/list',
     component: () => UserList,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/chat/list',
     name: 'chat/list',
     component: () => ChatList,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/login',
