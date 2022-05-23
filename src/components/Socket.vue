@@ -7,6 +7,7 @@
 
 <script>
 import Echo from 'laravel-echo'
+import store from '../store'
 
 export default {
   name: 'SocketComponent',
@@ -21,9 +22,15 @@ export default {
       window.io = require('socket.io-client')
       this.socket = new Echo({
         broadcaster: 'socket.io',
-        host: 'http://localhost:6001',
+        host: 'http://127.0.0.1:6001',
+        auth: {
+          headers: {
+            Authorization: store.getters.getToken,
+          },
+        },
       })
-      this.socket.channel('laravel_database_test').listen('test', (e) => {
+      this.socket.join('direct_message.2').listen('BroadCastEvent', (e) => {
+        console.log(e)
         this.message = e.message
       })
     },
