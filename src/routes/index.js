@@ -5,36 +5,41 @@ import UserList from '../views/UserList.vue'
 import Login from '../views/Login.vue'
 import Socket from '../components/Socket.vue'
 
-const requireAuth = () => (to, from, next) => {
+const checkAuth = () => (to, from, next) => {
   if (store.getters.isAuth) {
-    return next()
+    if (to.path === '/') {
+      next('/user/list')
+    } else {
+      next()
+    }
   }
-  next('/login')
+  next('/')
 }
 
 const routes = [
   {
     path: '/',
-    name: 'user/list',
-    component: () => UserList,
-    beforeEnter: requireAuth(),
+    name: 'login',
+    component: () => Login,
+    beforeEnter: checkAuth(),
   },
   {
     path: '/chat/list',
     name: 'chat/list',
     component: () => ChatList,
-    beforeEnter: requireAuth(),
+    beforeEnter: checkAuth(),
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => Login,
+    path: '/user/list',
+    name: 'user/list',
+    component: () => UserList,
+    beforeEnter: checkAuth(),
   },
   {
     path: '/socket',
     name: 'socket',
     component: () => Socket,
-    beforeEnter: requireAuth(),
+    beforeEnter: checkAuth(),
   },
 ]
 
