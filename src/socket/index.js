@@ -1,6 +1,7 @@
 import Echo from 'laravel-echo'
 import store from '../store'
 
+// TODO: host env 파일로 분리
 class Socket {
   socket = Object
 
