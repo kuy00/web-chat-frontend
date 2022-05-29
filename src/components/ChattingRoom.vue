@@ -42,9 +42,7 @@
 <script>
 import left from '@/assets/left.svg'
 import send from '@/assets/send.svg'
-import Http from '../utils/axios'
 import { error } from '../notification'
-import store from '../store'
 
 export default {
   name: 'ChattingRoom',
@@ -73,15 +71,15 @@ export default {
       const payload = {
         name: this.modelValue.name,
         users: [
-          store.getters.getUser.user_id,
+          this.$store.getters.getUser.user_id,
         ],
       }
 
-      if (store.getters.getUser.user_id !== this.modelValue.id) {
+      if (this.$store.getters.getUser.user_id !== this.modelValue.id) {
         payload.users.push(this.modelValue.id)
       }
 
-      const result = await Http('/direct-message', 'post', payload)
+      const result = await this.$http('/direct-message', 'post', payload)
 
       if (result.status === 200) {
         this.directMessage = result.data.data

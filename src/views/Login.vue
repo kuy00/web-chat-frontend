@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import Http from '../utils/axios'
 import { error } from '../notification'
 
 export default {
@@ -33,7 +32,7 @@ export default {
   },
   methods: {
     login: async function () {
-      const result = await Http('/login', 'post', {
+      const result = await this.$http('/login', 'post', {
         user_id: this.id,
         password: this.password,
       })

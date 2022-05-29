@@ -7,7 +7,6 @@
 
 <script>
 import Echo from 'laravel-echo'
-import store from '../store'
 
 export default {
   name: 'SocketComponent',
@@ -25,11 +24,11 @@ export default {
         host: 'http://127.0.0.1:6001',
         auth: {
           headers: {
-            Authorization: store.getters.getToken,
+            Authorization: this.$store.getters.getToken,
           },
         },
       })
-      this.socket.join('direct_message.2').listen('BroadCastEvent', (e) => {
+      this.socket.join('user.' + this.$store.getters.getUser.user_id).listen('BroadCastEvent', (e) => {
         console.log(e)
         this.message = e.message
       })

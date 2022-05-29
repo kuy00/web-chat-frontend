@@ -41,7 +41,6 @@
 <script>
 import SideMenu from '../components/SideMenu.vue'
 import ChattingRoom from '../components/ChattingRoom.vue'
-import Http from '../utils/axios'
 import { error } from '../notification'
 import search from '@/assets/search.svg'
 
@@ -71,7 +70,7 @@ export default {
   },
   methods: {
     fetch: async function () {
-      const result = await Http('/user', 'get')
+      const result = await this.$http('/user', 'get')
 
       if (result.status === 200) {
         this.userList = result.data
