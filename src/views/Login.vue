@@ -67,7 +67,7 @@ export default {
           name: result.data.data.accessToken.name,
           token: result.data.data.plainTextToken,
         })
-        this.$router.push('/socket')
+        this.$router.push('/user/list')
       } else {
         error(this, result.data.message)
       }

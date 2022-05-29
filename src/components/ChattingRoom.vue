@@ -56,6 +56,7 @@ export default {
       leftSvg: left,
       sendSvg: send,
       directMessage: {},
+      event: {},
     }
   },
   computed: {
@@ -67,6 +68,17 @@ export default {
     modelValue: function (newValue, oldValue) {
       this.createDirectMessage()
     },
+    event: function (newValue, oldValue) {
+      console.log('watch')
+      console.log(newValue)
+    },
+  },
+  created: function () {
+    // socket
+    this.$socket.connect()
+    this.$socket.socket.private('user.' + this.$store.getters.getUser.user_id).listen('BroadCastEvent', (e) => {
+      this.event = e
+    })
   },
   methods: {
     createDirectMessage: async function () {

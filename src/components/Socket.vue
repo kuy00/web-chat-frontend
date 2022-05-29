@@ -29,7 +29,7 @@ export default {
           },
         },
       })
-      this.socket.join('user.' + this.$store.getters.getUser.user_id).listen('BroadCastEvent', (e) => {
+      this.socket.private('user.' + this.$store.getters.getUser.user_id).listen('BroadCastEvent', (e) => {
         console.log(e)
         this.message = e.message
       })

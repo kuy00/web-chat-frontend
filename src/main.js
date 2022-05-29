@@ -16,4 +16,4 @@ app.mount('#app')
 
 window.io = require('socket.io-client')
 app.config.globalProperties.$http = http
-app.config.globalProperties.$socket = Socket
+app.config.globalProperties.$socket = new Socket()
