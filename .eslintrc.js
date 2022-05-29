@@ -4,14 +4,15 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'plugin:vue/essential',
     'standard',
+    'plugin:vue/recommended',
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaVersion: 2021,
     sourceType: 'module',
   },
@@ -20,5 +21,6 @@ module.exports = {
   ],
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
+    'vue/attribute-hyphenation': 'off',
   },
 }
