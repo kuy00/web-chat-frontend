@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button @click="connect">connect</button>
+    <button @click="connect">
+      connect
+    </button>
     <textarea v-model="message" />
   </div>
 </template>
