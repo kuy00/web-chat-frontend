@@ -12,8 +12,13 @@ const checkAuth = () => (to, from, next) => {
     } else {
       next()
     }
+  } else {
+    if (to.path === '/') {
+      next()
+    } else {
+      next('/')
+    }
   }
-  next('/')
 }
 
 const routes = [
