@@ -1,7 +1,7 @@
 <template>
-  <div id='container'>
+  <div id="container">
     <SideMenu />
-    <div class='div'>
+    <div class="div">
       chat list
     </div>
     <ChattingRoom />

@@ -1,16 +1,41 @@
 <template>
-  <div id='container'>
-    <div id='login'>
-      <div id='div'>
-        <span id='label_text'>Sign In</span>
+  <div id="container">
+    <div id="login">
+      <div id="div">
+        <span id="label_text">Sign In</span>
       </div>
-      <form id='login_form'>
-        <input class='input' type='text' ref='id' v-model='id' placeholder='ID' required/>
-        <input class='input' type='password' v-model='password' placeholder='PASSWORD' @keyup.enter='login' required/>
-        <button type='button' id='login_btn' @click='login'>LOGIN</button>
+      <form id="login_form">
+        <input
+          ref="id"
+          v-model="id"
+          class="input"
+          type="text"
+          placeholder="ID"
+          required
+        >
+        <input
+          v-model="password"
+          class="input"
+          type="password"
+          placeholder="PASSWORD"
+          required
+          @keyup.enter="login"
+        >
+        <button
+          id="login_btn"
+          type="button"
+          @click="login"
+        >
+          LOGIN
+        </button>
       </form>
-      <div id='div'>
-        <span id='sign_up' @click='signup'>Create Your Account</span>
+      <div id="div">
+        <span
+          id="sign_up"
+          @click="signup"
+        >
+          Create Your Account
+        </span>
       </div>
     </div>
   </div>

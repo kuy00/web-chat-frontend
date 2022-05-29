@@ -4,7 +4,7 @@ import store from '../store'
 const config = {
   withCredentials: false,
 }
-const http = async function (url, method = 'GET', payload = {}) {
+const http = async (url, method = 'GET', payload = {}) => {
   let result
   await axios({
     url: '/api' + url,

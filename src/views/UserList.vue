@@ -1,40 +1,40 @@
 <template>
-  <div id='container'>
+  <div id="container">
     <SideMenu />
-    <div id='main-container'>
-      <div id='search-container'>
+    <div id="main-container">
+      <div id="search-container">
         <input
-          id='input-container'
-          type='text'
-          placeholder='search'
-          @input='search'
-        />
+          id="input-container"
+          type="text"
+          placeholder="search"
+          @input="search"
+        >
         <svg-loader
-          id='svg-container'
-          :svgFile='searchSvg'
-          :width=40
-          :height=30
-          fill='gray'
+          id="svg-container"
+          :svgFile="searchSvg"
+          :width="40"
+          :height="30"
+          fill="gray"
         />
       </div>
-      <ul style='padding: 0px'>
+      <ul style="padding: 0px">
         <li
-          id='list'
-          v-for='user in filtered'
-          v-bind:key='user.id'
-          :style='setStyle(user)'
-          @click='chatt($event, user)'
+          v-for="user in filtered"
+          id="list"
+          :key="user.id"
+          :style="setStyle(user)"
+          @click="chatt($event, user)"
         >
-          <div id='image-container'>
+          <div id="image-container">
             <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile23.uf.tistory.com%2Fimage%2F2207573D58CFDE2704BB29">
           </div>
           <div>
-            <span>{{user.name}}</span>
+            <span>{{ user.name }}</span>
           </div>
         </li>
       </ul>
     </div>
-    <ChattingRoom v-model='currentUser'/>
+    <ChattingRoom v-model="currentUser" />
   </div>
 </template>
 
@@ -46,6 +46,10 @@ import search from '@/assets/search.svg'
 
 export default {
   name: 'UserList',
+  components: {
+    SideMenu,
+    ChattingRoom,
+  },
   data: function () {
     return {
       searchSvg: search,
@@ -53,10 +57,6 @@ export default {
       userList: [],
       currentUser: {},
     }
-  },
-  components: {
-    SideMenu,
-    ChattingRoom,
   },
   computed: {
     filtered: function () {

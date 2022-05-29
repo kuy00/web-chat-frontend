@@ -1,20 +1,20 @@
 <template>
-  <div id='side_menu'>
+  <div id="side_menu">
     <router-link to="/">
       <svg-loader
-        class='img'
-        :svgFile='peopleSvg'
-        :width=50
-        :height=50
+        class="img"
+        :svgFile="peopleSvg"
+        :width="50"
+        :height="50"
         :fill="setStyle('/')"
       />
     </router-link>
     <router-link to="/chat/list">
       <svg-loader
-        class='img'
-        :svgFile='meesageSvg'
-        :width=50
-        :height=50
+        class="img"
+        :svgFile="meesageSvg"
+        :width="50"
+        :height="50"
         :fill="setStyle('/chat/list')"
       />
     </router-link>

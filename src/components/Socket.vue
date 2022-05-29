@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button v-on:click='connect'>connect</button>
-    <textarea v-model='message' />
+    <button @click="connect">connect</button>
+    <textarea v-model="message" />
   </div>
 </template>
 
@@ -18,7 +18,6 @@ export default {
   },
   methods: {
     connect: function () {
-      window.io = require('socket.io-client')
       this.socket = new Echo({
         broadcaster: 'socket.io',
         host: 'http://127.0.0.1:6001',

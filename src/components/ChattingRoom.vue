@@ -1,35 +1,34 @@
 <template>
-  <div id='chatting-room'>
-    <div v-if='isVisible'>
-      <div id='top-container'>
+  <div id="chatting-room">
+    <div v-if="isVisible">
+      <div id="top-container">
         <svg-loader
-          id='svg-container'
-          :svgFile='leftSvg'
-          :width=30
-          :height=30
-          fill='gray'
-          @click='prev'
+          id="svg-container"
+          :svgFile="leftSvg"
+          :width="30"
+          :height="30"
+          fill="gray"
+          @click="prev"
         />
-        <div id='image-container'>
+        <div id="image-container">
           <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile23.uf.tistory.com%2Fimage%2F2207573D58CFDE2704BB29">
         </div>
         <div>
-          <span>{{modelValue.name}}</span>
+          <span>{{ modelValue.name }}</span>
         </div>
       </div>
-      <div id='main-container'>
-      </div>
-      <div id='bottom-container'>
+      <div id="main-container" />
+      <div id="bottom-container">
         <div>
           <div id="input-container">
-            <input />
+            <input>
             <div>
               <svg-loader
-                id='svg-container'
-                :svgFile='sendSvg'
-                :width=30
-                :height=30
-                fill='white'
+                id="svg-container"
+                :svgFile="sendSvg"
+                :width="30"
+                :height="30"
+                fill="white"
               />
             </div>
           </div>
@@ -47,11 +46,9 @@ import { error } from '../notification'
 export default {
   name: 'ChattingRoom',
   props: {
-    modelValue: Object,
-  },
-  watch: {
-    modelValue: function (newValue, oldValue) {
-      this.createDirectMessage()
+    modelValue: {
+      type: Object,
+      default: Object,
     },
   },
   data: function () {
@@ -64,6 +61,11 @@ export default {
   computed: {
     isVisible: function () {
       return !(Object.keys(this.modelValue).length === 0)
+    },
+  },
+  watch: {
+    modelValue: function (newValue, oldValue) {
+      this.createDirectMessage()
     },
   },
   methods: {
